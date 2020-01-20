@@ -38,11 +38,14 @@ module Xencoder
     def mappings
       return @mappings if defined?(@mappings)
 
-      old_seed = srand(@seed)
-      @mappings = @chars.shuffle
-      srand old_seed
+      @mappings = rand_with(seed) { @chars.shuffle }
+    end
 
-      @mappings
+    def rand_with(seed)
+      old_seed = srand(seed)
+      yield
+    ensure
+      srand old_seed
     end
 
     def build_chars(input)
