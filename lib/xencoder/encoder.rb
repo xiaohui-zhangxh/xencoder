@@ -1,18 +1,18 @@
 module Xencoder
   class Encoder
-    attr_reader :chars, :length, :max, :min, :seed
+    attr_reader :chars, :length, :max, :seed
 
     def initialize(chars, length: 6, seed: 1)
       @chars = build_chars(chars).freeze
       @length = length
       @seed = seed
       @xbase = Xbase.new(@chars)
-      @min = @xbase.to_i("#{chars[1]}#{chars[0] * (length - 1)}")
-      @max = @xbase.to_i(chars[-1] * length) - @min
+      @base = @xbase.to_i("#{chars[1]}#{chars[0] * (length - 1)}")
+      @max = @xbase.to_i(chars[-1] * length) - @base
     end
 
     def encode(number)
-      str = @xbase.to_x(number + min)
+      str = @xbase.to_x(number + @base)
       (str.length - 1).downto(1).each do |i|
         idx = mappings.index(str[i])
         idx2 = (mappings.index(str[i - 1]) + idx) % mappings.size
@@ -30,7 +30,7 @@ module Xencoder
         str[i] = mappings.at(idx2)
         str[i + 1] = mappings.at(idx)
       end
-      @xbase.to_i(str) - min
+      @xbase.to_i(str) - @base
     end
 
     private

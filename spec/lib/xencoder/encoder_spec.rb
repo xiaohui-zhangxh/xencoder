@@ -9,7 +9,6 @@ RSpec.describe Xencoder::Encoder do
     )
   end
 
-  it { expect(subject.min).to eq 256 } # '100'.to_i(16)
   it { expect(subject.max).to eq 3839 } # 'eff'.to_i(16)
 
   [0, 100, 1000].each do |i|
@@ -36,7 +35,6 @@ RSpec.describe Xencoder::Encoder do
       )
     end
 
-    it { expect(subject.min).to eq 3_521_614_606_208 }
     it { expect(subject.max).to eq 214_818_490_978_687 }
 
     [0, 1_000, 1_000_000, 1_000_000_000].each do |i|

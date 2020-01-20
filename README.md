@@ -25,22 +25,34 @@ Or install it yourself as:
 ```ruby
 require 'xencoder'
 
+Xencoder.encoder.length # default length of encoded string
+# => 6
+Xencoder.encoder.max    # the maximum value for encoding
+# => 55884102751
 Xencoder.encode(1)
-# => "G8M1fIny"
+# => "EPaPaP"
+Xencoder.encode(2)
+# => "HSo0u4"
 
-Xencoder.decode('G8M1fIny')
-# => 1
+Xencoder.decode('HSo0u4')
+# => 2
 
-encoder = Xencoder.new('0123456789abcdef', length: 4, seed: 200)
-encoder.encode(1)
+encoder1 = Xencoder.new('0123456789abcdef', length: 4, seed: 200)
+encoder1.max
+# => 61439
+encoder1.encode(1)
 # => "1c75"
+encoder1.encode(2)
+# => "3ec7"
 
-encoder = Xencoder.new('0123456789abcdef', length: 4, seed: 201)
-encoder.encode(1)
+encoder2 = Xencoder.new('0123456789abcdef', length: 4, seed: 201)
+encoder2.encode(1)
 # => "7b5c"
-
-encoder2 = Xencoder.new('欢迎来到中国', length: 4, seed: 200)
 encoder2.encode(2)
+# => "aea6"
+
+encoder3 = Xencoder.new('欢迎来到中国', length: 4, seed: 200)
+encoder3.encode(2)
 # => "来中中中"
 ```
 

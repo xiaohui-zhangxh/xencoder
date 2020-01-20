@@ -11,8 +11,7 @@ module Xencoder
     def encoder
       @encoder ||= Encoder.new(
         '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        length: 8,
-        seed: 100
+        length: 6
       )
     end
 

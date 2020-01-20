@@ -2,7 +2,7 @@ module Xencoder
   class Xbase
     attr_reader :chars
     def initialize(chars)
-      @chars = chars.dup
+      @chars = chars.dup.freeze
     end
 
     def to_i(str)
