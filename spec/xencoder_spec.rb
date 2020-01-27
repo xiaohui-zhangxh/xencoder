@@ -3,12 +3,12 @@ RSpec.describe Xencoder do
 
   context 'default encoder' do
     subject(:encoder) { described_class.encoder }
-    it { expect(subject.seed).to eq 100 }
-    it { expect(subject.length).to eq 8 }
+    it { expect(subject.seed).to eq 1 }
+    it { expect(subject.length).to eq 6 }
     it { expect(subject.chars).to match_array '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.chars }
   end
 
-  it { expect(described_class.encode(999)).to eq 'Xp4x0Ybq' }
-  it { expect(described_class.decode('Xp4x0Ybq')).to eq 999 }
+  it { expect(described_class.encode(999)).to eq 'P0u4bN' }
+  it { expect(described_class.decode('P0u4bN')).to eq 999 }
 
 end
