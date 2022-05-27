@@ -1,5 +1,6 @@
 RSpec.describe Xencoder do
   it { expect(described_class.new('01')).to be_a Xencoder::Encoder }
+  it { expect(described_class.new('0123456789abcdef', length: 4, seed: 200)).to be_a Xencoder::Encoder }
 
   context 'default encoder' do
     subject(:encoder) { described_class.encoder }

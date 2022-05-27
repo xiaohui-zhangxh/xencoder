@@ -1,10 +1,11 @@
 require "xencoder/version"
 require 'xencoder/xbase'
 require 'xencoder/encoder'
+require 'ruby2_keywords'
 
 module Xencoder
   class << self
-    def new(*args)
+    ruby2_keywords def new(*args)
       Encoder.new(*args)
     end
 
